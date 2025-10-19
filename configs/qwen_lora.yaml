@@ -1,0 +1,23 @@
+model_name: "Qwen/Qwen2.5-7B-Instruct"
+dataset_path: "data/sample.jsonl"
+output_dir: "outputs/qwen-2.5-lora"
+max_seq_length: 2048
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+num_epochs: 3
+learning_rate: 0.0002
+warmup_ratio: 0.03
+logging_steps: 10
+save_steps: 200
+bf16: true
+fp16: false
+use_4bit: true
+use_8bit: false
+dataset_field: "text"
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - v_proj

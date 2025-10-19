@@ -1,0 +1,25 @@
+model_name: "Qwen/Qwen2.5-7B-Instruct"
+dataset_path: "/datasets/fineweb/CC-MAIN-2025-05/data/CC-MAIN-2025-05"
+output_dir: "outputs/qwen-2.5-lora-smoke"
+max_steps: 10
+max_train_samples: 2000
+max_dataset_files: 2
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 0.0002
+warmup_ratio: 0.0
+logging_steps: 1
+save_steps: 0
+save_total_limit: 1
+bf16: true
+fp16: false
+use_4bit: true
+use_8bit: false
+dataset_field: "text"
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - q_proj
+    - v_proj
